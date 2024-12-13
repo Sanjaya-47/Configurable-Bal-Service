@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/os;
 
 type Greeting record {|
     string to;
@@ -6,6 +7,8 @@ type Greeting record {|
 |};
 
 configurable int port = 8080;
+//configurable int port2 = ?;
+//port2 = os:getEnv("port");
 //string to = "Jim";
 //string content = "GM";
 //listener http:Listener httpListener = new(port);
@@ -13,10 +16,13 @@ configurable int port = 8080;
 configurable string name = ?;
 configurable string content = ?;
 
+string envVar_name = os:getEnv("name");
+string envVar_content = os:getEnv("content");
+
 service http:Service / on new http:Listener(port){
     isolated resource function post greeting() returns string{
         //string message = string `Hello ${greeting.to}! ${greeting.content}`;
-        string message = string `Hello ${name}! ${content}`;
+        string message = string `Hello ${name}! ${content} *** envVars - name {name} content {content}`;
         return message;
     }
 }
