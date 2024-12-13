@@ -16,14 +16,15 @@ configurable int port = 8080;
 configurable string name = ?;
 configurable string content = ?;
 
-string envVar_name = os:getEnv("name");
-string envVar_content = os:getEnv("content");
+//string envVar_name = os:getEnv("name");
+//string envVar_content = os:getEnv("content");
 
 service http:Service / on new http:Listener(port){
     resource function post greeting() returns string{
         //string message = string `Hello ${greeting.to}! ${greeting.content}`;
-        string message = string `Hello ${name}! ${content} *** envVars - name ${envVar_name} content ${envVar_content}`;
-        return message;
+        //string message = string `Hello ${name}! ${content} *** envVars - name ${envVar_name} content ${envVar_content}`;
+        //return message;
+        return "Hi";
     }
 }
 
