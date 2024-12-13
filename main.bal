@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerina/os;
+//import ballerina/os;
 
 type Greeting record {|
     string to;
