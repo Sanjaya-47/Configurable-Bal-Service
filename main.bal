@@ -22,7 +22,7 @@ string envVar_content = os:getEnv("content");
 service http:Service / on new http:Listener(port){
     isolated resource function post greeting() returns string{
         //string message = string `Hello ${greeting.to}! ${greeting.content}`;
-        string message = string `Hello ${name}! ${content} *** envVars - name {name} content {content}`;
+        string message = string `Hello ${name}! ${content} *** envVars - name ${envVar_name} content ${envVar_content}`;
         return message;
     }
 }
